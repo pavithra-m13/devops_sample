@@ -10,8 +10,10 @@ import com.example.demo.repository.LogRepo;
 public class LogService {
             @Autowired
             private LogRepo rep;
-            public login log(String username, String password){
-                login user = rep.findByUsernameAndPassword(username, password);
+            public login log(String email, String password){
+                login user = rep.findByEmailAndPassword(email, password);
                 return user;
+ 
             }
+
 }

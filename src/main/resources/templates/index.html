@@ -4,17 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:rgb(20, 101, 112);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 600px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+    .left-image, .right-image {
+      flex: 1;
+      padding: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+    }
+    form {
+      flex: 2;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box; /* To include padding and border in width */
+    }
+    input[type="submit"] {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-  <h2>Login Form</h2>
-  <form action="#" th:action="@{/log}" method="post">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" required><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" required><br><br>
-    <input type="submit" value="Login">
-  </form>
+  <div class="container">
+    <div class="left-image">
+      <img src="https://play-lh.googleusercontent.com/ZCPU-kMTABemdqxWwp7UmbzDI7hghnJGzj7g-4bQZeBYzhB567ECIkzFuQPo2lnyRI4" alt="image">
+    </div>
+    <form action="#" th:action="@{/log}" method="POST">
+      <h2>Login Form</h2>
+      <label for="username">Email Address:</label><br>
+      <input type="email" id="email" name="email" required><br>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" required><br><br>
+      <input type="submit" value="Login">
+    </form>
+    <div class="right-image">
+      <img src="https://play-lh.googleusercontent.com/b7uemhn3RD_7eDGadpTO3HX7xw9lk6DX7lX2iDSK-b4fsXLX5vBQWOZr54OvUTdVMRY" alt="image">
+    </div>
+  </div>
 </body>
 </html>
-
-

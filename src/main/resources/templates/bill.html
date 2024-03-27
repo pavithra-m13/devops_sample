@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bill Generation</title>
+  <style>
+     body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(125, 216, 228); 
+            overflow: hidden;
+        }
+    header {
+            background-color:rgb(20,101,112); 
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            position: relative; 
+          
+        }
+      
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+    }
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: 80%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box; /* To include padding and border in width */
+      }
+    .left-side, .right-side {
+      width: 45%;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .add-button, .clear-button {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+    }
+    .add-button:hover, .clear-button:hover {
+      background-color: #45a049;
+    }
+    .print-button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #008CBA;
+      color: white;
+    }
+    .print-button:hover {
+      background-color: #005f6b;
+    }
+    .img{
+        width:max-content;
+        height:min-content;
+        align-items: center;
+        text-align: center;
+        margin-left: 10px;
+        left: -10px;
+    }
+      .back-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(20,101,112); 
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .logout-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(20,101,112); 
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Manage Products</h1>
+    <a href="home" class="back-button">back</a>
+    <a href="home" class="logout-button">Logout</a>
+</header>
+  <div class="container">
+    <div class="left-side">
+      <h2>Add Items to Bill</h2>
+      <form id="bill-form">
+        <label for="bill-id">Bill ID:</label><br>
+        <input type="text" id="bill-id" name="bill-id" required><br>
+        <label for="product-id">Product ID:</label><br>
+        <input type="text" id="product-id" name="product-id" required><br>
+        <label for="quantity">Quantity:</label><br>
+        <input type="text" id="quantity" name="quantity" required><br><br>
+        <button type="submit" class="add-button">Add to Bill</button>
+        <button type="button" class="clear-button">Clear</button>
+      </form>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQecV-Mb91ed6AIWZ8bMgToktKLF-0s6X9zGsd2XaS9qcP0ApTEbulvlhJDnn3XyUjXtBo&usqp=CAU">
+    </div>
+    <div class="right-side">
+        <h2>Product List</h2>
+      <table id="product-list">
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>MRP</th>
+            <th>Price</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Product list data will be dynamically populated here -->
+        </tbody>
+      </table>
+      <h2>Ideal Bill Generation</h2>
+      <table id="ideal-bill">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>MRP</th>
+            <th>Price</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Ideal bill data will be dynamically populated here -->
+        </tbody>
+      </table>
+      <button class="print-button">Print Bill</button>
+    </div>
+  </div>
+</body>
+</html>

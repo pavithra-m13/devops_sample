@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e1f5fe; 
+            overflow: hidden;
+        }
+
+        header {
+            background-color:rgb(20,101,112); 
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            position: relative; 
+        }
+
+        .login-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(20,101,112); 
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .register-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 100px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(20,101,112); 
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+           
+        }
+
+        .image-container {
+            flex: 1;
+        }
+
+        .image-container img {
+            margin-left:100px;
+            margin-bottom:0px;
+            width: 100%;
+            height: 80%;
+        }
+
+        .buttons-container {
+            flex: 1;
+            margin-block-start:-120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(20,101,112); 
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Inventory Management</h1>
+        <a href="login" class="login-button">Login</a>
+        <a href="register" class="register-button">Register</a>
+    </header>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXYiDMxJMaYSMz5lmy4BeeuN01f48VzGa417pzA68EF21CCX45" alt="Image">
+        </div>
+        <div class="buttons-container">
+            <a href="product" class="button">Product Management</a>
+            <a href="supplier_management" class="button">Supplier Management</a>
+            <a href="bill" class="button">Bill Generation</a>
+        </div>
+    </div>
+</body>
+</html>

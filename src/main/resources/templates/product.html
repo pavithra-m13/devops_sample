@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e1f5fe; 
+            overflow: hidden;
+        }
+
+        header {
+            background-color:rgb(20,101,112); 
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            position: relative; 
+        }
+
+        .back-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(20,101,112); 
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .logout-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(20,101,112); 
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            /* width: 90%; Set container width to 90% */
+            margin: 0 auto; /* Center the container horizontally */
+            padding: 30px;
+            justify-items: center;
+            justify-content: center;
+        }
+
+        .column {
+            flex: 1;
+            margin-left: -150px; /* Add margin between columns */
+        }
+        
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            flex: 0 0 120px; /* Fixed width for labels */
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .form-group input {
+            flex: 1; /* Fill remaining space */
+            padding: 8px;
+            padding-left: 90px;
+            padding-right: 30px;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .buttons-container {
+            flex-basis: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 2px;
+            background-color: rgb(20,101,112); 
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0px;
+            border: 1px solid black;
+            margin-bottom: -260px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgb(20,101,112);
+            color: white;
+            overflow-y: hidden;
+        }
+
+        /* Center the heading */
+        .table-heading {
+            margin-top: -10px;
+            text-align: center;
+        }
+
+        /* Enable horizontal scrolling for table body */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        .table-body {
+            overflow-y: auto;
+            margin-bottom: -260px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Manage Products</h1>
+        <a href="home" class="back-button">back</a>
+        <a href="home" class="logout-button">Logout</a>
+    </header>
+
+    <div class="container">
+        <form action="#" th:action="@{/log}" method="post">
+            <div class="column">
+                <div class="form-group">
+                    <label for="prodid">PRODID:</label>
+                    <input type="text" id="prodid" name="prodid" required>
+                    <label for="quantity">QUANTITY:</label>
+                    <input type="text" id="quantity" name="quantity" required>
+                    
+                </div>
+            </div>
+            <div class="column">
+                <div class="form-group">
+                    <label for="name">NAME:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="price">PRICE:</label>
+                    <input type="text" id="price" name="price" required>
+                </div>
+            </div>
+            <div class="column">
+                <div class="form-group">
+                    <label for="exp">EXPIRY DATE:</label>
+                    <input type="text" id="exp" name="exp" required>
+                    <label for="sid">SUPPLIER ID:</label>
+                    <input type="text" id="sid" name="sid" required>
+                </div>
+            </div>
+            <div class="buttons-container">
+                <input type="submit" class="button" value="ADD">
+                <input type="submit" class="button" value="EDIT">
+                <input type="submit" class="button" value="DELETE">
+                <input type="submit" class="button" value="CLEAR">
+            </div>
+        </form>
+    </div>
+
+    <!-- Table for product list -->
+    <h2 class="table-heading">PRODUCT LISTS</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead style="overflow: hidden;">
+                <tr>
+                    <th>PRODID</th>
+                    <th>PRODNAME</th>
+                    <th>PRODQTY</th>
+                    <th>PRODPRICE</th>
+                    <th>PRODEXP</th>
+                    <th>SUPID</th>
+                </tr>
+            </thead>
+            <tbody style="overflow-y: auto;">
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>$10.00</td>
+                    <td>Category 1</td>
+                    <td>Category 1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

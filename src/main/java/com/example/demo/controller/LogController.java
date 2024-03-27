@@ -21,22 +21,53 @@ public class LogController {
     public String api()
     {
  
-        return "index";
+        return "home";
     }
+@GetMapping("/login")
+    public String login()
+    {
+ 
+            return "index";
+    }
+    @GetMapping("/home")
+    public String home()
+    {
+ 
+            return "home";
+    }
+ 
  
     @PostMapping("/log")
     public String login(@ModelAttribute("user") login user) {
  
-        login oauthUser = service.log(user.getUsername(), user.getPassword());
+        login oauthUser = service.log(user.getEmail(), user.getPassword());
  
         System.out.print(oauthUser);
         if (Objects.nonNull(oauthUser)) {
-            return "redirect:/disp";
+            return "redirect:/home";
         } else {
             return "redirect:/";
         }
     }
  
+    @GetMapping("/register")
+    public String register()
+    {
+ 
+        return "register";
+    }
+    @GetMapping("/bill")
+    public String bill()
+    {
+ 
+        return "bill";
+    }
+    @GetMapping("/product")
+    public String product()
+    {
+ 
+        return "product";
+    }
     @GetMapping("/disp")
     public String display() {
         return "display";
